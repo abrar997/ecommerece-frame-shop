@@ -1,0 +1,28 @@
+
+.cards {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.card {
+  width: 300px;
+  margin-left: 10px;
+  box-shadow: 1px 1px 15px rgb(219, 213, 213);
+  padding: 20px;
+  height: 360px;
+  margin-bottom: 10px;
+}
+
+/* .cardsss{} */
+
+img {
+  height: 200px;
+  margin-bottom: 15px;
+}
+
+h6 {
+  font-weight: none;
+  font-size: 13px;
+}
+
+

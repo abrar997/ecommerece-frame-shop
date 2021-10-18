@@ -1,0 +1,14 @@
+
+nav {
+  position: relative;
+  text-align: center;
+  -webkit-box-shadow: 2px 2px 3px #888;
+  -moz-box-shadow: 2px 2px 3px #888;
+  box-shadow: 2px 2px 3px #888;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.nav form .form-control{
+  width: 300px;
+}
