@@ -61,8 +61,8 @@ const Nav = ({ totalItems }) => {
 
 
                 <div className="d-flex" id="product">
-                  <NavLink to="/Products " style={link}>
-                    Products
+                  <NavLink to="/Product " style={link}>
+                    Product
                   </NavLink>
 
                   <NavLink to="/Cart" style={link}>

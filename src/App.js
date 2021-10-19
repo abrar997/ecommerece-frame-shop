@@ -47,17 +47,25 @@ export const App = () => {
 
   // 2B update //aihhhhh not work yet &  i don't know what is a problem but in shaa Allah i will solve it
   // اشتعلت بس شون والله مدريz
-  const handleUpdateCartQty = async (lineItemId, quantity) => {
-    const { cart } = await commerce.cart.update(lineItemId, quantity); //update all  items depending on its id and the quantity
-    setCart(cart);
+  // const handleUpdateCart = async (lineItemId, quantity) => {
+  //   const { cart } = await commerce.cart.update(lineItemId, quantity); //update all  items depending on its id and the quantity
+  //   setCart(cart);
+  // };
+  // الفرق بين مالتي مالتو انو بس خلة {quantity }
+  // وكل شي اشتغل عدل 
+  const handleUpdateCart = async (lineItemId, quantity) => {
+    const response = await commerce.cart.update(lineItemId, { quantity });
+
+    setCart(response.cart);
   };
+
 
   // 2C  Remove  work already by using callback function with its arguments inside onClick button
   const handleRemoveFromCart = async (lineItemId) => {
     //remove items
     const { cart } = await commerce.cart.remove(lineItemId);
     setCart(cart);
-  };
+  }
 
   //2D Clear cart empty cart dearly
 
@@ -67,8 +75,8 @@ export const App = () => {
   };
 
   // to print data from products ecommerece js in console
-  // console.log(product);
-  // console.log(cart);
+  console.log(product);
+  console.log(cart);
 
   // call function to run and update just when u open page
   useEffect(() => {
@@ -81,7 +89,8 @@ export const App = () => {
     <div>
       <BrowserRouter>
         {/* //number on basket so easy اللهم سهل  */}
-        <Nav totalItems={cart.total_items} />
+        <Nav totalItems={cart.total_items }/>
+
         {/* transfer data from state (component App) as props to another component  */}
         {/* <Products products={product} onAddToCart={handleAddToCart} />
         <Cart
@@ -94,11 +103,10 @@ export const App = () => {
           <Route path="/" exact>
             <Products products={product} onAddToCart={handleAddToCart} />
           </Route>
-
           <Route path="/Cart">
             <Cart
               cart={cart}
-              handleUpdateCartQty={handleUpdateCartQty}
+              handleUpdateCart={handleUpdateCart}
               handleRemoveFromCart={handleRemoveFromCart}
               handleEmptyCart={handleEmptyCart}
             />

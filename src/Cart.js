@@ -1,10 +1,10 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import CartItems from "./components/CartItems";
 // cart depend on id to get card like tomato and lineitems  to change numbers on basket(shopping ) in nav bar and subtotal
 const Cart = ({
   cart,
-  handleUpdateCartQty,
+  handleUpdateCart,
   handleRemoveFromCart,
   handleEmptyCart,
 }) => {
@@ -23,10 +23,12 @@ const Cart = ({
   //   empty cart
 
   const renderEmptyCart = () => (
-    <h3>
-      you have no items in your shopping cart ,
-      <Link to="./Products"> start adding some !</Link>{" "}
-    </h3>
+    <>
+      <h3>
+        you have no items in your shopping cart ,
+        <Link to="/"> start adding some !</Link>
+      </h3>
+    </>
   );
 
   // syntax od cards in cart
@@ -43,21 +45,27 @@ const Cart = ({
           <div key={ind}>
             <CartItems
               item={item}
-              handleUpdateCartQty={handleUpdateCartQty}
+              handleUpdateCart={handleUpdateCart}
               handleRemoveFromCart={handleRemoveFromCart}
             />
           </div>
         );
       })}
 
-      <div className="col-lg-12">
+      <div className="col-lg-12 m-auto " style={{backgroundColor:"#eee",margin:"auto"}}>
         {/* u don't need callback(()=>handleEmptyCart)  function if you write your button will not works */}
-        <h3>subtotal: {cart.subtotal.formatted_with_symbol} </h3>
+        <h3>
+          subtotal:
+          <span style={{ backgroundColor: "orange", color: "white" }}>
+            
+            {cart.subtotal.formatted_with_symbol}
+          </span>
+        </h3>
         <button
           style={{
             width: "300px",
             border: "none",
-            backgroundColor: "rgba(0, 0, 0, 0.653)",
+            backgroundColor: "green",
             color: "white",
             borderRadius: "20px",
             padding: "20px",
@@ -71,14 +79,14 @@ const Cart = ({
   );
 
   const h1Style = {
-    // textTransform: "upperCase",
-    color: " rgba(0, 0, 0, 0.653)",
-    margin: "30px 0px 40px 60px",
-    borderBottom: "6px solid orange",
-    width: "300px",
-    fontFamily: '"Alegreya", serif',
-    fontFamily: '"Berkshire Swash", cursive',
-    paddingBottom: "10px",
+        // textTransform: "upperCase",
+        color: " rgba(0, 0, 0, 0.653)",
+        margin: "30px 0px 40px 60px",
+        borderBottom: "6px solid orange",
+        width: "300px",
+        fontFamily: '"Alegreya", serif',
+        fontFamily: '"Berkshire Swash", cursive',
+        paddingBottom: "10px",
   };
 
   // خذي الطريقة الثاني هم تحل error  length
